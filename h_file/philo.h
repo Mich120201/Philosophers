@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 10:33:25 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/28 10:57:10 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/09/29 10:49:52 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,54 @@
 # include <string.h>
 # include "../libft/h_file/libft.h"
 
-typedef enum e_bool
-{
-	TRUE = 1,
-	FALSE = 0
-}	t_bool;
-
 typedef struct s_philo
 {
-	int			id;
-	int			ttd;
-	int			tte;
-	int			tts;
-	int			count_eat;
-	int			fork;
-	long long	time_start;
+	int				id;
+	int				ttd;
+	int				tte;
+	int				tts;
+	int				count_eat;
+	int				l_fork;
+	int				r_fork;
+	long long		time_start;
+	long long		last_eat;
+	struct s_info	*info;
 }	t_philo;
 
 typedef struct s_info
 {
-	int				count_philo;
+	int				c_philo;
+	int				c_eat;
 	int				flag_of_death;
+	long long		s_time;
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	print;
 	t_philo			*philo;
 }	t_info;
 
-void	errors(int ac, char **av);
+typedef enum e_bool
+{
+	TRUE = 1,
+	FALSE = 0
+}	t_bool;
+
+/*src*/
 int		main(int ac, char **av);
+void	start_program(t_info *info);
+	/*philo*/
+		/*errors*/
+void	errors(int ac, char **av);
+		/*initialization*/
+t_info	*initalization_info(int ac, char **av);
+int		creat_philosophers(t_info *info);
+int		initialization_philosophers(t_info *info, char **av);
+		/*life*/
+void	*death_time(void *dt);
+void	*time_life(void *dt);
+		/*utils*/
+int		free_info(t_info *info);
+void	destroy_mutex(t_info *info);
 long	atoilong(const char *str);
 
 #endif

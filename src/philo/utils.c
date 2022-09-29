@@ -6,11 +6,34 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:02:14 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/27 12:02:55 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/09/28 12:54:32 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../h_file/philo.h"
+
+int	free_info(t_info *info)
+{
+	if (info->philo)
+		free(info->philo);
+	if (info->fork)
+		free(info->fork);
+	if (info->thread)
+		free(info->thread);
+	free(info);
+	return (1);
+}
+
+void	destroy_mutex(t_info *info)
+{
+	int	i;
+
+	i = -1;
+	while (++i < info->c_philo)
+		if (pthread_mutex_destroy(&info->fork[i]))
+			ft_printf("Error!! the mutex %d was destroyed!!\n", i);
+	pthread_mutex_destroy(&info->print);
+}
 
 long	atoilong(const char *str)
 {
