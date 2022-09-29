@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 10:08:37 by mvolpi            #+#    #+#              #
-#    Updated: 2022/09/27 12:03:50 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/09/29 12:27:58 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,10 @@ NAME = philo
 SRC_MAIN = src/philosopher.c
 
 SRC_PH = src/philo/errors.c \
+			src/philo/initialization.c \
+			src/philo/life.c \
+			src/philo/moves.c \
+			src/philo/print.c \
 			src/philo/utils.c \
 
 LIBFT  = libft/libft.a

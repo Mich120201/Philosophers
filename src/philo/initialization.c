@@ -6,19 +6,19 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:34:40 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/28 12:33:45 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/09/29 12:29:38 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../h_file/philo.h"
 
-t_info	*initalization_info(int ac, char **av)
+t_info	*initialization_info(int ac, char **av)
 {
 	t_info	*info;
 
 	info = malloc(sizeof(t_info));
 	if (!info)
-		retunr (NULL);
+		return (NULL);
 	info->c_philo = ft_atoi(av[1]);
 	info->c_eat = 0;
 	if (ac == 6)
@@ -31,7 +31,7 @@ t_info	*initalization_info(int ac, char **av)
 	return (info);
 }
 
-int	creat_philosophers(t_info *info)
+int	create_philosophers(t_info *info)
 {
 	info->thread = malloc(sizeof(pthread_t) * info->c_philo);
 	if (!info->thread)

@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:44:42 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/29 10:51:11 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/09/29 12:26:33 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	*death_time(void *dt)
 			if (info->c_eat)
 				if (info->philo[i].count_eat == info->c_eat)
 					return (NULL);
-			if ((get_print_time() - info->philo[i].last_eat) \
+			if ((get_time() - info->philo[i].last_eat) \
 				> info->philo[i].ttd)
 			{
 				info->flag_of_death = 1;
 				pthread_mutex_lock(&info->print);
 				ft_printf("%lld %d is dead\n",
-					get_print_time() - info->philo[i].time_start,
+					get_time() - info->philo[i].time_start,
 					info->philo[i].id);
 				return (NULL);
 			}
@@ -50,7 +50,7 @@ void	*time_life(void *dt)
 	info = philo->info;
 	if (philo->id % 2 == 0)
 	{
-		philo_print(info, philo, "is thinking");
+		print_moves(info, philo, "is thinking");
 		ft_sleep(50);
 	}
 	while (!info->flag_of_death)
@@ -60,8 +60,8 @@ void	*time_life(void *dt)
 				return (NULL);
 		if (is_eating(info, philo))
 			return (NULL);
-		is_sleep(info, philo);
-		is_think(info, philo);
+		is_sleeping(info, philo);
+		is_thinking(info, philo);
 	}
 	return (NULL);
 }
