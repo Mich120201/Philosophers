@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 10:33:25 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/04 11:14:54 by mvolpi           ###   ########.fr       */
+/*   Created: 2022/10/04 11:23:05 by mvolpi            #+#    #+#             */
+/*   Updated: 2022/10/04 11:59:21 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,16 @@
 # include <stdio.h>
 # include <string.h>
 # include <sys/time.h>
-# include <errno.h>
-# include "../libft/h_file/libft.h"
 
 typedef struct s_philo
 {
 	int				id;
-	int				ttd;
-	int				tte;
-	int				tts;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
 	int				count_eat;
-	int				l_fork;
-	int				r_fork;
+	int				left_fork;
+	int				right_fork;
 	long long		time_start;
 	long long		last_eat;
 	struct s_info	*info;
@@ -38,10 +36,10 @@ typedef struct s_philo
 
 typedef struct s_info
 {
-	int				c_philo;
-	int				c_eat;
+	int				count_philo;
+	int				count_of_eat;
 	int				flag_of_death;
-	long long		s_time;
+	long long		time_start;
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	print;
@@ -54,31 +52,31 @@ typedef enum e_bool
 	FALSE = 0
 }	t_bool;
 
-/*src*/
-void		start_program(t_info *info);
-int			main(int ac, char **av);
-	/*philo*/
-		/*errors*/
-void		errors(int ac, char **av);
-		/*initialization*/
-t_info		*initialization_info(int ac, char **av);
-int			create_philosophers(t_info *info);
-int			initialization_philosophers(t_info *info, char **av);
-		/*life*/
-void		*death_time(void *dt);
-void		*time_life(void *dt);
-		/*moves*/
-int			is_eating(t_info *info, t_philo *philo);
-void		is_sleeping(t_info *info, t_philo *philo);
-void		is_thinking(t_info *info, t_philo *philo);
-		/*print*/
-
-void		print_moves(t_info *info, t_philo *philo, char *str);
-		/*utils*/
-long long	get_time(void);
-int			free_info(t_info *info);
-void		destroy_mutex(t_info *info);
-void		ft_sleep(long long time);
+//utils
+long long	ft_atoi(const char *str);
+char		**ft_split(char const *s, char c);
+int			ft_isdigit(int c);
 long		atoilong(const char *str);
+long long	get_timestamp(void);
+int			ft_free(t_info *info);
+void		ft_destroy_mutex(t_info *info);
+void		ft_usleep(long long time);
+
+//init
+t_info		*init_info(int ac, char **av);
+int			errors(int ac, char **av);
+int			malloc_philo(t_info *info);
+int			init_philo(t_info *info, char **av);
+
+//philo
+void		philo_print(t_info	*info, t_philo *philo, char *str);
+int			eating(t_info *info, t_philo *philo);
+void		sleeping(t_info *info, t_philo *philo);
+void		thinking(t_info *info, t_philo *philo);
+
+//main
+void		start(t_info *info);
+void		*philo_life(void *data);
+void		*death(void *data);
 
 #endif

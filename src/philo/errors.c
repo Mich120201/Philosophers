@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 10:32:36 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/04 10:35:33 by mvolpi           ###   ########.fr       */
+/*   Created: 2022/10/04 11:28:02 by mvolpi            #+#    #+#             */
+/*   Updated: 2022/10/04 12:24:45 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	missing_argc(int ac)
 	}
 }
 
-void	errors(int ac, char **av)
+int	errors(int ac, char **av)
 {
 	int		i;
 	char	**str;
@@ -79,4 +79,13 @@ void	errors(int ac, char **av)
 				"if you want, you can add one more parameter:" \
 				" number of times each philosopher must eat\n"\
 				"\033[0m");
+	i = 0;
+	while (++i < 5)
+	{
+		if (ft_atoi(av[i]) <= 0)
+		{
+			printf("\033[0;31m" "Error: '%c' invalid\n" "\033[0m", av[i]);
+			exit (0);
+		}
+	}
 }

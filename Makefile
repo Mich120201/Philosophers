@@ -5,67 +5,62 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/27 10:08:37 by mvolpi            #+#    #+#              #
-#    Updated: 2022/09/29 12:27:58 by mvolpi           ###   ########.fr        #
+#    Created: 2022/10/04 11:34:22 by mvolpi            #+#    #+#              #
+#    Updated: 2022/10/04 12:43:35 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC_MAIN = src/philosopher.c
+SRC_MAIN = src/philosophers.c
 
-SRC_PH = src/philo/errors.c \
-			src/philo/initialization.c \
-			src/philo/life.c \
-			src/philo/moves.c \
-			src/philo/print.c \
-			src/philo/utils.c \
-
-LIBFT  = libft/libft.a
+SRC_PH = src/philo/errors.c
+			src/philo/ft_split.c
+			src/philo/initialization.c
+			src/philo/life.c
+			src/philo/moves.c
+			src/philo/print.c
+			src/philo/utils_2.c
+			src/philo/utils.c
 
 FLAGS = -Wall -Wextra -Werror
 
 OBJ_DIR = obj
 
 OBJ = $(SRC_MAIN:src/%.c=$(OBJ_DIR)/%.o)\
-		$(SRC_PH:src/push_swap/%.c=$(OBJ_DIR)/push_swap/%.o)\
+		$(SRC_PH:src/philo/%.c=$(OBJ_DIR)/philo/%.o)
 
 all: $(NAME)
 
 clean:
-	@echo "     - Removing push_swap object files..."
-	@rm -rf $(OBJ_DIR)
-	@echo "          push_swap OBJ deleted"
-	@make -C libft clean
+	@echo " -Removing philo object file..."
+	@rm -rf	$(OBJ_DIR)
+	@echo "		PHILO OBJ FILE DELETED"
 
-fclean: clean
-	@echo "     - Removing $(NAME)..."
-	@rm -rf $(NAME)
-	@echo "          $(NAME) *.a deleted"
-	@make -C libft fclean
+fclean:
+	@echo " -Removing $(NAME)..."
+	@rm -rf	$(OBJ_DIR)
+	@echo "		$(NAME) *.a DELETED"
 
 re: fclean all
 
 $(OBJ_DIR) :
 	@mkdir $(OBJ_DIR)
-	@mkdir obj/push_swap
-	@mkdir obj/array_moves
+	@mkdir obj/philo
 
-$(OBJ_DIR)/%.o : src/%.c 
+$(OBJ_DIR)/%.o : src/%.c
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(OBJ_DIR)/push_swap/%.o : src/push_swap/%.c 
+$(OBJ_DIR)/%.o : src/philo/%.c
 	@$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-	@echo "     - Making libft..."
-	@make -s -C libft
-	@echo "     - Making $(NAME)..."
-	@gcc $(FLAGS) $(OBJ) $(LIBFT) $(FT_PRINTF) -o $(NAME)
-	@echo "          $(NAME) created"
-	@echo "     - Compiled -"
+	@echo " -Making $(NAME)..."
+	@gcc $(FLAGS) $(OBJ) -o $(NAME)
+	@echo "		$(NAME) created"
+	@echo "			-COMPILED-"
 
-norm: 
-	@norminette -R CheckForbiddenSourceHeader
+norm:
+	@norminette -R CheckForbiddenHeader
 
 .PHONY : all clean fclean re
