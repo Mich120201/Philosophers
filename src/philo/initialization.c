@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:34:40 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/29 12:29:38 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/04 11:15:54 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ t_info	*initialization_info(int ac, char **av)
 	if (ac == 6)
 		info->c_eat = ft_atoi(av[5]);
 	info->flag_of_death = 0;
-	info->philo = NULL;
+	info->s_time = 0;
+	info->thread = NULL;
 	info->fork = NULL;
 	pthread_mutex_init(&info->print, NULL);
-	info->thread = NULL;
+	info->philo = NULL;
 	return (info);
 }
 

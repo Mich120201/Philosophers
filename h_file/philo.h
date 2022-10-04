@@ -6,20 +6,20 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 10:33:25 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/29 12:25:27 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/04 11:14:54 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <pthread.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <errno.h>
-# include <pthread.h>
-# include <sys/time.h>
 # include <string.h>
+# include <sys/time.h>
+# include <errno.h>
 # include "../libft/h_file/libft.h"
 
 typedef struct s_philo
@@ -55,8 +55,8 @@ typedef enum e_bool
 }	t_bool;
 
 /*src*/
-int			main(int ac, char **av);
 void		start_program(t_info *info);
+int			main(int ac, char **av);
 	/*philo*/
 		/*errors*/
 void		errors(int ac, char **av);
@@ -72,9 +72,10 @@ int			is_eating(t_info *info, t_philo *philo);
 void		is_sleeping(t_info *info, t_philo *philo);
 void		is_thinking(t_info *info, t_philo *philo);
 		/*print*/
-long long	get_time(void);
+
 void		print_moves(t_info *info, t_philo *philo, char *str);
 		/*utils*/
+long long	get_time(void);
 int			free_info(t_info *info);
 void		destroy_mutex(t_info *info);
 void		ft_sleep(long long time);

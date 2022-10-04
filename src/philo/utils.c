@@ -6,11 +6,21 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:02:14 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/29 12:22:34 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/04 11:15:47 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../h_file/philo.h"
+
+long long	get_time(void)
+{
+	struct timeval	t;
+	long long		now;
+
+	gettimeofday(&t, NULL);
+	now = ((t.tv_sec * 1000) + (t.tv_usec / 1000));
+	return (now);
+}
 
 int	free_info(t_info *info)
 {
@@ -31,7 +41,7 @@ void	destroy_mutex(t_info *info)
 	i = -1;
 	while (++i < info->c_philo)
 		if (pthread_mutex_destroy(&info->fork[i]))
-			ft_printf("Error!! the mutex %d was destroyed!!\n", i);
+			printf("Error!! the mutex %d was destroyed!!\n", i);
 	pthread_mutex_destroy(&info->print);
 }
 

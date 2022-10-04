@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:44:42 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/09/29 12:26:33 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/04 11:16:30 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*death_time(void *dt)
 			{
 				info->flag_of_death = 1;
 				pthread_mutex_lock(&info->print);
-				ft_printf("%lld %d is dead\n",
+				printf("%lld %d is dead\n",
 					get_time() - info->philo[i].time_start,
 					info->philo[i].id);
 				return (NULL);
@@ -50,7 +50,7 @@ void	*time_life(void *dt)
 	info = philo->info;
 	if (philo->id % 2 == 0)
 	{
-		print_moves(info, philo, "is thinking");
+		print_moves(info, philo, "is thinking\n");
 		ft_sleep(50);
 	}
 	while (!info->flag_of_death)
