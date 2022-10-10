@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:28:02 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/04 12:24:45 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/10 10:38:11 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ int	errors(int ac, char **av)
 	{
 		if (ft_atoi(av[i]) <= 0)
 		{
-			printf("\033[0;31m" "Error: '%c' invalid\n" "\033[0m", av[i]);
+			printf("\033[0;31m" "Error: '%s' invalid\n" "\033[0m", av[i]);
 			exit (0);
 		}
 	}
+	return (0);
 }

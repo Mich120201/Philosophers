@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:34:22 by mvolpi            #+#    #+#              #
-#    Updated: 2022/10/04 12:43:35 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/10/10 10:35:16 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,14 @@ NAME = philo
 
 SRC_MAIN = src/philosophers.c
 
-SRC_PH = src/philo/errors.c
-			src/philo/ft_split.c
-			src/philo/initialization.c
-			src/philo/life.c
-			src/philo/moves.c
-			src/philo/print.c
-			src/philo/utils_2.c
-			src/philo/utils.c
+SRC_PH = src/philo/errors.c \
+			src/philo/ft_split.c \
+			src/philo/initialization.c \
+			src/philo/life.c \
+			src/philo/moves.c \
+			src/philo/print.c \
+			src/philo/utils_2.c \
+			src/philo/utils.c \
 
 FLAGS = -Wall -Wextra -Werror
 
