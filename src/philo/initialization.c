@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:30:25 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/04 11:41:12 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/10 10:29:20 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_info	*init_info(int ac, char **av)
 	return (info);
 }
 
-int	malloc_philo(t_info *info)
+int	create_info(t_info *info)
 {
 	info->thread = malloc(sizeof(pthread_t) * info->count_philo);
 	if (!info->thread)

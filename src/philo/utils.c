@@ -6,13 +6,13 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:32:51 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/04 11:40:07 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/10 10:24:10 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../h_file/philo.h"
 
-long long	get_timestamp(void)
+long long	get_time(void)
 {
 	struct timeval	t;
 	long long		now;
@@ -22,7 +22,7 @@ long long	get_timestamp(void)
 	return (now);
 }
 
-int	ft_free(t_info *info)
+int	free_info(t_info *info)
 {
 	if (info->philo)
 		free(info->philo);
@@ -34,7 +34,7 @@ int	ft_free(t_info *info)
 	return (1);
 }
 
-void	ft_destroy_mutex(t_info *info)
+void	destroy_mutex(t_info *info)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ void	ft_usleep(long long time)
 {
 	long long	start;
 
-	start = get_timestamp();
-	while (get_timestamp() - start < time)
+	start = get_time();
+	while (get_time() - start < time)
 		usleep(100);
 }
