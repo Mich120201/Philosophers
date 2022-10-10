@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:28:02 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/10 10:38:11 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/10 10:57:04 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ static void	missing_argc(int ac)
 			if (ac == 4)
 				printf("\033[0;31m" "Error!!\n" "time_to_sleep; missing\n" \
 					"\033[0m");
+			if (ac == 5)
+				printf("\033[0;32m" \
+					"if you want, you can add one more parameter:" \
+					" number of times each philosopher must eat\n"\
+					"\033[0m");
 		}
 	}
 }
@@ -73,12 +78,8 @@ int	errors(int ac, char **av)
 	{
 		str = ft_split(av[i], ' ');
 		isnumber(str);
+		free_str(str);
 	}
-	if (ac == 5)
-		printf("\033[0;32m" \
-				"if you want, you can add one more parameter:" \
-				" number of times each philosopher must eat\n"\
-				"\033[0m");
 	i = 0;
 	while (++i < 5)
 	{

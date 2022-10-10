@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:23:05 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/10 10:30:31 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/10 10:56:55 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ long		atoilong(const char *str);
 
 /*utils*/
 long long	get_time(void);
+void		free_str(char **str);
 int			free_info(t_info *info);
 void		destroy_mutex(t_info *info);
 void		ft_usleep(long long time);

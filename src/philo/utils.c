@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:32:51 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/10 10:24:10 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/10 10:56:39 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@ long long	get_time(void)
 	gettimeofday(&t, NULL);
 	now = ((t.tv_sec * 1000) + (t.tv_usec / 1000));
 	return (now);
+}
+
+void	free_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
 
 int	free_info(t_info *info)
