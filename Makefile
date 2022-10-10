@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:34:22 by mvolpi            #+#    #+#              #
-#    Updated: 2022/10/10 10:35:16 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/10/10 10:47:41 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ clean:
 
 fclean:
 	@echo " -Removing $(NAME)..."
-	@rm -rf	$(OBJ_DIR)
+	@rm -rf	$(NAME)
 	@echo "		$(NAME) *.a DELETED"
 
 re: fclean all
