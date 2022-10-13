@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:28:02 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/10/10 10:57:04 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/10/13 10:16:49 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,14 @@ static void	missing_argc(int ac)
 				"number of philosophers: missing\n" \
 				"time to die: missing\n" "time to eat: missing\n" \
 				"time to sleep; missing\n" "\033[0m");
-			if (ac == 2)
+			else if (ac == 2)
 				printf("\033[0;31m" "Error!!\n" "time_to_die: missing\n" \
 					"time_to_eat: missing\n" "time_to_sleep; missing\n" "\033[0m");
-			if (ac == 3)
+			else if (ac == 3)
 				printf("\033[0;31m" "Error!!\n" "time_to_eat: missing\n"\
 					"time_to_sleep; missing\n" "\033[0m");
-			if (ac == 4)
+			else if (ac == 4)
 				printf("\033[0;31m" "Error!!\n" "time_to_sleep; missing\n" \
-					"\033[0m");
-			if (ac == 5)
-				printf("\033[0;32m" \
-					"if you want, you can add one more parameter:" \
-					" number of times each philosopher must eat\n"\
 					"\033[0m");
 		}
 	}
