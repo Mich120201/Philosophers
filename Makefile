@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:34:22 by mvolpi            #+#    #+#              #
-#    Updated: 2022/10/10 10:47:41 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/10/13 10:31:29 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ clean:
 	@rm -rf	$(OBJ_DIR)
 	@echo "		PHILO OBJ FILE DELETED"
 
-fclean:
+fclean: clean
 	@echo " -Removing $(NAME)..."
 	@rm -rf	$(NAME)
 	@echo "		$(NAME) *.a DELETED"
